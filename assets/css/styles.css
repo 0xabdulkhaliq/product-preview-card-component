@@ -33,6 +33,7 @@
     box-sizing: border-box;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     font-weight: 500;
+    -webkit-font-smoothing: antialiased;
 }
 *::selection {    /* Disables text highlighting */
     color: none;
@@ -71,8 +72,17 @@ body {
 }
 
 .product-container > .product-preview {
-    background-image: url("../images/image-product-desktop.jpg");
-    background-size: cover;
+    overflow: hidden;
+}
+.product-container > .product-preview > picture > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.7s ease;
+}
+.product-container > .product-preview > picture > img:hover {
+    transform: scale(1.3) translateY(30px);
+    filter: brightness(1.1);
 }
 
 .product-container > .product-description {
@@ -83,7 +93,7 @@ body {
 }
 .product-container > .product-description > .product-catagory {
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: .50em;
     font-weight: 600;
 }
@@ -108,9 +118,17 @@ body {
     color: var(--dark-cyan);
     font-weight: 700;
 }
-.product-container > .product-description > .product-price > .original-price {
+.product-container > .product-description > .product-price > del > .sr-only {
     text-decoration: line-through;
-    font-size: 12px;
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.product-container > .product-description > .product-price > del {
+    font-size: 13px;
 }
 .product-container > .product-description > .add-to-cart-btn {
     all: unset;       /* remove all button styles */
@@ -122,10 +140,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.7s ease;
     gap: 15px;
     font-weight: 600;
 }
-.product-container > .product-description > .add-to-cart-btn:active {
+.product-container > .product-description > .add-to-cart-btn:hover {
     background-color: var(--very-dark-blue);
 }
 
@@ -137,6 +156,8 @@ body {
     bottom: 0;
     padding-bottom: 15px;
     z-index: 1;
+    width: 100%;
+    text-align: center;
 }
 .author-link > * {
     color: var(--lighten-dark-blue);
@@ -170,9 +191,7 @@ body {
     }
     .product-container > .product-description {
         justify-content: space-around;
-    }
-    .product-container > .product-preview {
-        background-image: url("../images/image-product-mobile.jpg");
+        padding: 20px;
     }
     .product-container > .product-description > .product-name {
         width: 100%;

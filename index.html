@@ -4,14 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <title>Product preview card component | Frontend Mentor</title>
+  <title>Product preview card</title>
   <link rel="stylesheet" href="./assets/css/styles.css">
   <script src="https://unpkg.com/scrollreveal"></script>
   </style>
 </head>
 <body>
   <main class="product-container">      <!-- product preview card component section -->
-    <div class="product-preview"></div>
+    <div class="product-preview">
+      <picture>
+        <source media="(min-width: 455px)" srcset="./assets/images/image-product-desktop.jpg">
+        <source media="(min-width: 0px)" srcset="./assets/images/image-product-mobile.jpg">
+        <img src="./assets/images/image-product-desktop.jpg">
+      </picture>
+    </div>
     <div class="product-description">
       <span class="product-catagory">Perfume</span>
       <h1 class="product-name">Gabrielle Essence Eau De Parfum</h1>
@@ -21,10 +27,10 @@
       </p>
       <div class="product-price">
         <span class="flat-price">$149.99</span>
-        <span class="original-price">$169.99</span>
+        <del><span class="sr-only">Previous Price</span>$169.99</del>
       </div>
       <button class="add-to-cart-btn">
-        <img src="./assets/images/icon-cart.svg" alt="cart-icon">
+        <img src="./assets/images/icon-cart.svg" alt="" aria-hidden="true">
         Add to Cart
       </button>
     </div>
